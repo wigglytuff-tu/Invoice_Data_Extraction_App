@@ -38,7 +38,8 @@ if uploaded_files:
 
     # Create DataFrame
     df = pd.DataFrame(records)
-    
+    df['invoice_date'] = pd.to_datetime(df['invoice_date'], format='%d %b %Y', errors='coerce').dt.strftime('%d-%m-%Y')
+
     # Display the DataFrame
     st.subheader("Extracted Data")
     st.dataframe(df)
